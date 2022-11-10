@@ -6,7 +6,7 @@
 /*   By: sdos-san < sdos-san@student.42.rio >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:37:56 by sdos-san          #+#    #+#             */
-/*   Updated: 2022/11/10 12:07:03 by sdos-san         ###   ########.fr       */
+/*   Updated: 2022/11/10 18:21:29 by sdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ static t_philo	*initialize_id(int argc, char **argv, int i, t_philo *id)
 	if (argc == 6)
 		temp->eat_count = ft_atoi(argv[5]);
 	temp->status = 0;
+	temp->detach = 1;
 	return (temp);
 }
 
@@ -190,7 +191,8 @@ void	join_threads(int philonum, pthread_t	*philos)
 	i = 0;
 	while(i < philonum)
 	{
-		pthread_join(philos[i], NULL);
+		if (philos->detach)
+			pthread_join(philos[i], NULL);
 		i++;
 	}
 }

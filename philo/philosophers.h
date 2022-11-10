@@ -6,7 +6,7 @@
 /*   By: sdos-san < sdos-san@student.42.rio >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:44:27 by sdos-san          #+#    #+#             */
-/*   Updated: 2022/11/10 11:54:36 by sdos-san         ###   ########.fr       */
+/*   Updated: 2022/11/10 18:21:12 by sdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct philosophers
 	unsigned int	last_eat;
 	int				id;
 	int				status;
+	int				detach;
 	pthread_mutex_t	*forks;
 } t_philo;
 
