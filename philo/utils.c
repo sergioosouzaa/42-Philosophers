@@ -6,23 +6,33 @@
 /*   By: sdos-san < sdos-san@student.42.rio >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:37:03 by sdos-san          #+#    #+#             */
-/*   Updated: 2022/11/09 13:37:28 by sdos-san         ###   ########.fr       */
+/*   Updated: 2022/11/23 14:54:18 by sdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-static int	ft_iswhitespace(int ch)
+int	ft_iswhitespace(int ch)
 {
 	return ((ch >= 9 && ch <= 13) || ch == 32);
 }
 
-static int	ft_isdigit(int ch)
+int	ft_isdigit(int ch)
 {
 	return (ch >= 48 && ch <= 57);
 }
 
-unsigned int	ft_atoi(const char *str)
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (*(str + i) != '\0')
+		i++;
+	return (i);
+}
+
+long int	ft_atoi(const char *str)
 {
 	unsigned int	pos;
 	long int		output;

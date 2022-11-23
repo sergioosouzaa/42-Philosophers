@@ -6,7 +6,7 @@
 #    By: sdos-san < sdos-san@student.42.rio >       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 10:52:12 by sdos-san          #+#    #+#              #
-#    Updated: 2022/11/09 13:51:32 by sdos-san         ###   ########.fr        #
+#    Updated: 2022/11/23 16:31:41 by sdos-san         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,11 @@ RM			=	rm -rf
 #       MANDATORY    #
 
 FILES	=	main \
+			utils \
 			errors \
 			threads \
 			utils \
+			create_threads \
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
