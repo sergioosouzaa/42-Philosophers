@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_threads.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sdos-san <sdos-san@student.42.rio>         +#+  +:+       +#+        */
+/*   By: sdos-san < sdos-san@student.42.rio >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:27:27 by sdos-san          #+#    #+#             */
-/*   Updated: 2022/11/25 18:18:38 by sdos-san         ###   ########.fr       */
+/*   Updated: 2022/11/29 14:37:18 by sdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,13 @@ void	initialize_shared(t_shared *shared, int argc, char **argv)
 	shared->time_to_sleep = ft_atoi(argv[4]);
 	shared->eat_max = -1;
 	shared->pestilence = 1;
-	shared->begin_time = gett_time();
+	shared->begin_time = get_begin_time();
 	shared->eaten_times = malloc(sizeof(long long) * shared->phil_num);
+	shared->eat_count = malloc(sizeof(int) * shared->phil_num);
 	while (i < (int)shared->phil_num)
 	{
-		shared->eaten_times[i] = shared->begin_time;
+		shared->eaten_times[i] = 0;
+		shared->eat_count[i] = 0;
 		i++;
 	}
 	if (argc == 6)
@@ -90,31 +92,6 @@ void	create_mutex(t_shared *shared)
 	pthread_mutex_init(&shared->death, NULL);
 }
 
-/*Destroy all the mutexes and free the malloc forks*/
-
-void	destroy_mutexes(t_shared *shared)
-{
-	int	i;
-
-	i = 0;
-	while (i < (int)shared->phil_num)
-	{
-		pthread_mutex_destroy(&shared->forks[i]);
-		i++;
-	}
-	free(shared->forks);
-	pthread_mutex_destroy(&shared->printf);
-	pthread_mutex_destroy(&shared->death);
-}
-
-/* Free all things*/
-
-void	free_all(t_shared *shared, t_philo *id)
-{
-	free(shared->philos);
-	free(id);
-}
-
 /* Join all the threads and free its resources*/
 
 void	join_threads(t_shared *shared, pthread_t assasin)
@@ -136,9 +113,15 @@ void	join_threads(t_shared *shared, pthread_t assasin)
 
 t_philo	*initialize_id(int i, t_philo *id, t_shared *global)
 {
-	id->eat_count = 0;
 	id->global = global;
 	id->id = i;
 	id->status = 0;
+	id->first = (id->id + 1) % id->global->phil_num;
+	id->second = id->id;
+	if (id->id % 2 == 0)
+	{
+		id->first = id->id;
+		id->second = (id->id + 1) % id->global->phil_num;
+	}
 	return (id);
 }

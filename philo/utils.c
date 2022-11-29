@@ -6,7 +6,7 @@
 /*   By: sdos-san < sdos-san@student.42.rio >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:37:03 by sdos-san          #+#    #+#             */
-/*   Updated: 2022/11/23 14:54:18 by sdos-san         ###   ########.fr       */
+/*   Updated: 2022/11/29 14:37:33 by sdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,18 @@ long int	ft_atoi(const char *str)
 		pos++;
 	}
 	return (output);
+}
+
+/* Free all things*/
+
+void	free_all(t_shared *shared, t_philo *id)
+{
+	if (shared->philos)
+		free(shared->philos);
+	if (shared->eat_count)
+		free(shared->eat_count);
+	if (shared->eaten_times)
+		free(shared->eaten_times);
+	if (id)
+		free(id);
 }
