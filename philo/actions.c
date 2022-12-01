@@ -6,7 +6,7 @@
 /*   By: sdos-san < sdos-san@student.42.rio >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:37:29 by sdos-san          #+#    #+#             */
-/*   Updated: 2022/11/29 14:38:11 by sdos-san         ###   ########.fr       */
+/*   Updated: 2022/12/01 11:02:31 by sdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	check_eat(t_shared *temp)
 	return (1);
 }
 
-void	*kill(void *data)
+void	*finish_them(void *data)
 {
 	t_shared	*temp;
 	int			i;

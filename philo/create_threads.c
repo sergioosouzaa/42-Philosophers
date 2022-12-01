@@ -6,7 +6,7 @@
 /*   By: sdos-san < sdos-san@student.42.rio >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:27:27 by sdos-san          #+#    #+#             */
-/*   Updated: 2022/11/29 14:37:18 by sdos-san         ###   ########.fr       */
+/*   Updated: 2022/12/01 11:02:07 by sdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	create_threads(int argc, char **argv, int philonum, pthread_t	*philos)
 	id = malloc(sizeof(t_philo) * philonum);
 	if (!id)
 		return (malloc_error());
-	if (pthread_create(&assasin, NULL, &kill, &shared))
-		create_thread_error();
+	if (pthread_create(&assasin, NULL, &finish_them, &shared))
+		return (create_thread_error());
 	while (i < philonum)
 	{
 		initialize_id(i, &id[i], &shared);
@@ -107,9 +107,9 @@ void	join_threads(t_shared *shared, pthread_t assasin)
 	pthread_join(assasin, NULL);
 }
 
-// STATUS CODE 0 - WANTS TO EAT, DID NOT PRINT THAT IS THINKING
-// STATUS CODE 1 - WANTS TO EAT, ALREADY PRINT THAT IS THINKING
-// STATUS CODE 2 - IS EATING, READY TO SLEEP
+/* STATUS CODE 0 - WANTS TO EAT, DID NOT PRINT THAT IS THINKING */
+/* STATUS CODE 1 - WANTS TO EAT, ALREADY PRINT THAT IS THINKING */
+/* STATUS CODE 2 - IS EATING, READY TO SLEEP */
 
 t_philo	*initialize_id(int i, t_philo *id, t_shared *global)
 {

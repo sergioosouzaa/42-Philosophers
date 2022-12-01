@@ -6,11 +6,11 @@
 /*   By: sdos-san < sdos-san@student.42.rio >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 15:16:30 by sdos-san          #+#    #+#             */
-/*   Updated: 2022/12/01 14:32:42 by sdos-san         ###   ########.fr       */
+/*   Updated: 2022/12/01 10:19:43 by sdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "philosophers_bonus.h"
 
 /* Check if all the arguments are positive numbers */
 
@@ -45,7 +45,6 @@ int	check_arguments(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	pthread_t	*philos;
 	int			philonum;
 
 	if (argc != 5 && argc != 6)
@@ -59,9 +58,6 @@ int	main(int argc, char **argv)
 		printf("Error: Invalid Arguments\n");
 		return (0);
 	}
-	philos = malloc(sizeof(pthread_t) * philonum);
-	if (!philos)
-		return (malloc_error());
-	create_threads(argc, argv, philonum, philos);
+	create_philo(argc, argv, philonum);
 	return (0);
 }

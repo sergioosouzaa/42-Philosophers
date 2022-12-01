@@ -6,11 +6,11 @@
 /*   By: sdos-san < sdos-san@student.42.rio >       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 11:42:29 by sdos-san          #+#    #+#             */
-/*   Updated: 2022/11/29 17:57:45 by sdos-san         ###   ########.fr       */
+/*   Updated: 2022/12/01 10:19:11 by sdos-san         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
+#include "philosophers_bonus.h"
 
 int	malloc_error(void)
 {
